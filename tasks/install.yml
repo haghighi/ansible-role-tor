@@ -1,15 +1,12 @@
 ---
 
-- name: Install the latest version of Tor and torsocks [RedHat Based]
-  yum:
-    name: ['tor', 'torsocks']
-    update_cache: true
-    state: present
-  when: ansible_os_family == 'RedHat'
-
-- name: Install the latest version of Tor and torsocks [Debian Based]
-  apt:
-    name: ['tor', 'torsocks']
-    update_cache: true
-    state: present
+- name: Update sources
+  apt: update_cache=yes cache_valid_time=86400
+  changed_when: no
   when: ansible_os_family == 'Debian'
+
+- name: Install tor and torsocks
+  package:
+    name: ['tor', 'torsocks']
+    state: present
+    default_release: "{{ tor_default_release|default(omit) }}"

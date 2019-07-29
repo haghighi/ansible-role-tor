@@ -40,10 +40,9 @@ MIT
 Forked from https://git.feneas.org/noplanman/ansible-role-tor
 
 [travis-build-status]: https://img.shields.io/travis/noplanman/ansible-role-tor.svg?style=flat-square "Travis-CI Build Status"
-[travis-tests]: https://travis-ci.org/noplanman/ansible-role-tor "Travis-CI Tests"
+[travis-tests]: https://travis-ci.org/haghighi-ahmad/ansible-role-tor "Travis-CI Tests"
 [ansible-role-shield]: https://img.shields.io/ansible/role/21806.svg?style=flat-square "Tor on Ansible Galaxy"
 [ansible-role]: https://galaxy.ansible.com/noplanman/tor "Tor on Ansible Galaxy"
-[git.feneas.org]: https://git.feneas.org/noplanman/ansible-role-tor "Ansible Role Tor on Feneas"
 [Tor]: https://www.torproject.org/ "Tor Project"
-[defaults]: https://git.feneas.org/noplanman/ansible-role-tor/blob/master/defaults/main.yml "Default variables"
-[`tests`]: https://git.feneas.org/noplanman/ansible-role-tor/tree/master/tests "Tests"
+[defaults]: https://github.com/haghighi-ahmad/ansible-role-tor/blob/master/defaults/main.yml "Default variables"
+[`tests`]: https://github.com/haghighi-ahmad/ansible-role-tor/tree/master/tests "Tests"

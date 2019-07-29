@@ -6,15 +6,13 @@ galaxy_info:
   description: Install and run tor on RedHat and Debian based systems.
   author: Ahmad Haghighi
   license: MIT
-  min_ansible_version: 2.3.0
+  min_ansible_version: 2.0.0
   issue_tracker_url: https://gitlab.com/haghighi_ahmad/ansible-role-tor/issues
   platforms:
     - name: Fedora
       versions:
         - 30
         - 29
-        - 28
-        - 27
     - name: EL
       versions:
         - 7
@@ -23,12 +21,10 @@ galaxy_info:
       versions:
         - bionic
         - xenial
-        - trusty
     - name: Debian
       versions:
         - buster
         - stretch
-        - jessie
   galaxy_tags:
     - tor
     - onion

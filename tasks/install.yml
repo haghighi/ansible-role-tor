@@ -1,8 +1,9 @@
 ---
 
 - name: Install the latest version of Tor and torsocks [RedHat Based]
-  dnf:
+  yum:
     name: ['tor', 'torsocks']
+    update_cache: true
     state: present
   when: ansible_os_family == 'RedHat'
 

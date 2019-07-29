@@ -1,0 +1,10 @@
+---
+
+- include: sysinfo.yml
+  tags: tor:sysinfo
+- include: install.yml
+  tags: tor:install
+- include: enable.yml
+  tags: tor:enable
+- include: configure.yml
+  tags: tor:configure

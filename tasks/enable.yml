@@ -1,0 +1,7 @@
+---
+
+  - name: Enable Systemd services
+    systemd:
+      name: tor
+      enabled: yes
+      daemon_reload: yes

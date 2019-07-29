@@ -39,10 +39,10 @@ Check the [`tests`] folder.
 MIT   
 Forked from https://git.feneas.org/noplanman/ansible-role-tor
 
-[travis-build-status]: https://img.shields.io/travis/noplanman/ansible-role-tor.svg?style=flat-square "Travis-CI Build Status"
+[travis-build-status]: https://api.travis-ci.org/haghighi-ahmad/ansible-role-tor.svg?branch=master&style=flat-square "Travis-CI Build Status"
 [travis-tests]: https://travis-ci.org/haghighi-ahmad/ansible-role-tor "Travis-CI Tests"
-[ansible-role-shield]: https://img.shields.io/ansible/role/21806.svg?style=flat-square "Tor on Ansible Galaxy"
-[ansible-role]: https://galaxy.ansible.com/noplanman/tor "Tor on Ansible Galaxy"
+[ansible-role-shield]: https://img.shields.io/ansible/role/42361.svg?style=flat-square "Tor on Ansible Galaxy"
+[ansible-role]: https://galaxy.ansible.com/haghighi_ahmad/tor "Tor on Ansible Galaxy"
 [Tor]: https://www.torproject.org/ "Tor Project"
 [defaults]: https://github.com/haghighi-ahmad/ansible-role-tor/blob/master/defaults/main.yml "Default variables"
 [`tests`]: https://github.com/haghighi-ahmad/ansible-role-tor/tree/master/tests "Tests"

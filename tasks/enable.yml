@@ -3,5 +3,4 @@
 - name: Enable Systemd services
   service: 
     name: tor 
-    state: reloaded
     enabled: true

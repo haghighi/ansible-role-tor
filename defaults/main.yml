@@ -3,7 +3,7 @@
 #tor_user: "debian-tor"
 #tor_group: "debian-tor"
 tor_relay: false
-tor_proxy: false
+tor_proxy: true
 tor_run_as_daemon: true
 tor_or_port: 9001
 tor_dir_port: 9030

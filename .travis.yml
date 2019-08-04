@@ -15,7 +15,7 @@ env:
 script:
   # Configure test script so we can run extra tests after playbook is run.
   - export container_id=$(date +%s)
-  - export cleanup=false
+  - export cleanup=true
 
   # Download test shim.
   - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/haghighi-ahmad/e81ac858cfb2eecb0218d3f856dd9b74/raw/

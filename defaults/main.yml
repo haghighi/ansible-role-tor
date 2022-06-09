@@ -1,5 +1,6 @@
 ---
 
+tor_enable_official_apt_repo: false
 #tor_user: "debian-tor"
 #tor_group: "debian-tor"
 tor_relay: false

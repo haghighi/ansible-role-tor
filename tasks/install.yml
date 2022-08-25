@@ -7,6 +7,39 @@
     state: present
   when: ansible_os_family == 'RedHat'
 
+- name: Configure official Tor APT package repository
+  when: ansible_os_family == 'Debian' and tor_enable_official_apt_repo == true
+  block:
+    - name: Install apt-transport-https
+      ansible.builtin.package:
+        name: apt-transport-https
+
+    - name: Configure Tor OpenPGP repository release key
+      ansible.builtin.copy:
+        dest: /usr/share/keyrings/tor-archive-keyring.gpg
+        src: tor-archive-keyring.gpg
+        owner: "root"
+        group: "root"
+        mode: "0644"
+
+    - name: Configure Tor sources.list
+      ansible.builtin.copy:
+        dest: /etc/apt/sources.list.d/tor.list
+        owner: "root"
+        group: "root"
+        mode: "0644"
+        content: |
+          deb     [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org {{ ansible_distribution_release }} main
+          deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org {{ ansible_distribution_release }} main
+
+    - name: Update package lists
+      apt:
+        update_cache: 'yes'
+
+    - name: Install Tor APT keyring package
+      apt:
+        name: deb.torproject.org-keyring
+
 - name: Install the latest version of Tor and torsocks [Debian Based]
   apt:
     name: ['tor', 'torsocks']

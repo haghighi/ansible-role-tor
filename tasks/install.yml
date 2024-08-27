@@ -14,10 +14,16 @@
       ansible.builtin.package:
         name: apt-transport-https
 
+    - name: Remove old Tor OpenPGP release key
+      ansible.builtin.file:
+        path: /usr/share/keyrings/tor-archive-keyring.gpg
+        state: absent
+
     - name: Configure Tor OpenPGP repository release key
       ansible.builtin.copy:
-        dest: /usr/share/keyrings/tor-archive-keyring.gpg
-        src: tor-archive-keyring.gpg
+        #dest: /usr/share/keyrings/tor-archive-keyring.gpg
+        dest: /usr/share/keyrings/deb.torproject.org-keyring.gpg
+        src: deb.torproject.org-keyring.gpg
         owner: "root"
         group: "root"
         mode: "0644"
@@ -29,8 +35,8 @@
         group: "root"
         mode: "0644"
         content: |
-          deb     [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org {{ ansible_distribution_release }} main
-          deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org {{ ansible_distribution_release }} main
+          deb     [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org {{ ansible_distribution_release }} main
+          deb-src [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org {{ ansible_distribution_release }} main
 
     - name: Update package lists
       apt:

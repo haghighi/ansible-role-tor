@@ -11,12 +11,12 @@ galaxy_info:
   platforms:
     - name: Fedora
       versions:
-        - 30
-        - 29
+        - "30"
+        - "29"
     - name: EL
       versions:
-        - 7
-        - 6
+        - "7"
+        - "6"
     - name: Ubuntu
       versions:
         - bionic

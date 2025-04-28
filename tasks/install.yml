@@ -1,25 +1,25 @@
 ---
 
-- name: Install the latest version of Tor and torsocks [RedHat Based]
-  yum:
+- name: install | Install the latest version of Tor and torsocks [RedHat Based]
+  ansible.builtin.dnf:
     name: ['tor', 'torsocks']
     update_cache: true
     state: present
   when: ansible_os_family == 'RedHat'
 
-- name: Configure official Tor APT package repository
-  when: ansible_os_family == 'Debian' and tor_enable_official_apt_repo == true
+- name: install | Configure official Tor APT package repository
+  when: ansible_os_family == 'Debian' and tor_enable_official_apt_repo
   block:
-    - name: Install apt-transport-https
+    - name: install | Install apt-transport-https
       ansible.builtin.package:
         name: apt-transport-https
 
-    - name: Remove old Tor OpenPGP release key
+    - name: install | Remove old Tor OpenPGP release key
       ansible.builtin.file:
         path: /usr/share/keyrings/tor-archive-keyring.gpg
         state: absent
 
-    - name: Configure Tor OpenPGP repository release key
+    - name: install | Configure Tor OpenPGP repository release key
       ansible.builtin.copy:
         #dest: /usr/share/keyrings/tor-archive-keyring.gpg
         dest: /usr/share/keyrings/deb.torproject.org-keyring.gpg
@@ -28,7 +28,10 @@
         group: "root"
         mode: "0644"
 
-    - name: Configure Tor sources.list
+    # Using yamllint rule, since "noqa: yaml[line-length]" does not work
+    # Details at https://github.com/ansible/ansible-lint/issues/3881
+    # yamllint disable
+    - name: install | Configure Tor sources.list
       ansible.builtin.copy:
         dest: /etc/apt/sources.list.d/tor.list
         owner: "root"
@@ -37,17 +40,18 @@
         content: |
           deb     [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org {{ ansible_distribution_release }} main
           deb-src [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org {{ ansible_distribution_release }} main
+    # yamllint enable
 
-    - name: Update package lists
-      apt:
+    - name: install | Update package lists
+      ansible.builtin.apt:
         update_cache: 'yes'
 
-    - name: Install Tor APT keyring package
-      apt:
+    - name: install | Install Tor APT keyring package
+      ansible.builtin.apt:
         name: deb.torproject.org-keyring
 
-- name: Install the latest version of Tor and torsocks [Debian Based]
-  apt:
+- name: install | Install the latest version of Tor and torsocks [Debian Based]
+  ansible.builtin.apt:
     name: ['tor', 'torsocks']
     update_cache: true
     state: present

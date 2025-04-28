@@ -1,10 +1,17 @@
 ---
 
-- include: sysinfo.yml
+- name: Sysinfo
+  ansible.builtin.include_tasks: sysinfo.yml
   tags: tor:sysinfo
-- include: install.yml
+
+- name: Install
+  ansible.builtin.include_tasks: install.yml
   tags: tor:install
-- include: enable.yml
+
+- name: Enable
+  ansible.builtin.include_tasks: enable.yml
   tags: tor:enable
-- include: configure.yml
+
+- name: Configure
+  ansible.builtin.include_tasks: configure.yml
   tags: tor:configure

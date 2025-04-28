@@ -1,6 +1,6 @@
 ---
 
-- name: Enable Systemd services
-  service: 
-    name: tor 
+- name: enable | Enable Systemd services
+  ansible.builtin.service:
+    name: tor
     enabled: true
